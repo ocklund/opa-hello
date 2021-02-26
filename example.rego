@@ -1,3 +1,3 @@
 package http.authz
 
-allow = false
+allow = true
