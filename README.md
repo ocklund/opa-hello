@@ -49,7 +49,7 @@ allow {
     input.path == ["greeting"]
     input.method == "GET"
     contains(input.headers[_], "curl")
-    input.remoteipaddress == "0:0:0:0:0:0:0:1"
+    input.remoteipaddress == "127.0.0.1"
 }
 ```
 - Load updated policy again (see above) and test policy again (see above). Should allow request
