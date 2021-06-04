@@ -54,6 +54,17 @@ allow {
 ```
 - Load updated policy again (see above) and test policy again (see above). Should allow request
 
+## How to run with docker compose
+
+This loads policy `example.rego` into opa automatically at startup first time. Then reload policy and make requests with
+curl the same way as above.
+
+- Start opa server and app server (add `-d` to run in detached mode)
+```
+docker compose up
+```
+- Stop servers with Ctrl+c (or `docker compose down` if in detached mode)
+
 ## References
 
 https://github.com/open-policy-agent/contrib/tree/master/spring_authz

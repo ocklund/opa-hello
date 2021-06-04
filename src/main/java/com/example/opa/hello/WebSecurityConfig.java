@@ -1,6 +1,7 @@
 package com.example.opa.hello;
 
 import com.example.opa.hello.voter.OpaVoter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDecisionManager;
@@ -18,7 +19,9 @@ import static java.util.Collections.singletonList;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final OpaVoter opaVoter = new OpaVoter("http://localhost:8181/v1/data/http/authz/allow");
+    @Value("${opa.host:localhost}")
+    private String opaHost;
+    private final OpaVoter opaVoter = new OpaVoter(String.format("http://%s:8181/v1/data/http/authz/allow", opaHost));
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
